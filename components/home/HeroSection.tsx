@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Phone, Globe, Zap, TrendingUp, Search } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 
 const stats = [
   { value: "186+", label: "Projects Done", sub: "since 2021" },
@@ -15,20 +15,6 @@ const highlights = [
   { label: "Get a Free Audit", href: "/contact" },
   { label: "Book Consultation", href: "/schedule-meeting" },
 ];
-
-const floatingCards = [
-  { icon: Globe, label: "Web Development", color: "#00C2FF", pos: "top" },
-  { icon: Zap, label: "AI Automation", color: "#7B5EA7", pos: "right" },
-  { icon: TrendingUp, label: "Digital Marketing", color: "#00C2FF", pos: "bottom" },
-  { icon: Search, label: "SEO Growth", color: "#7B5EA7", pos: "left" },
-];
-
-const posStyle: Record<string, string> = {
-  top: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
-  right: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2",
-  bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-  left: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2",
-};
 
 export default function HeroSection() {
   return (
@@ -121,75 +107,29 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center w-full"
           >
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[420px] md:h-[420px] flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full border-2 border-[#00C2FF]/20" />
-              <div className="absolute inset-[-20px] rounded-full border border-dashed border-[#00C2FF]/15 animate-[spin_30s_linear_infinite]" />
-              <div className="absolute inset-[-40px] rounded-full border border-[#1C1C28]" />
-
-              <div
-                className="absolute w-56 h-56 md:w-72 md:h-72 rounded-full opacity-25 blur-3xl pointer-events-none"
-                style={{ background: "radial-gradient(circle, #7B5EA7, #00C2FF)" }}
-              />
-
-              <div
-                className="w-48 h-48 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full flex flex-col items-center justify-center relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(145deg, #2A1A4A 0%, #1A1A3A 50%, #0D1A2E 100%)",
-                  border: "2px solid rgba(0,194,255,0.25)",
-                  boxShadow: "0 0 60px rgba(0,194,255,0.12), inset 0 1px 0 rgba(255,255,255,0.06)",
-                }}
-              >
-                <div
-                  className="absolute inset-0 rounded-full"
-                  style={{ background: "radial-gradient(circle at 35% 25%, rgba(255,255,255,0.08) 0%, transparent 60%)" }}
-                />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/agent.jpg"
-                  alt="Nexsolutions AI"
-                  className="absolute inset-0 w-full h-full object-cover opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/90 via-[#0A0A0F]/20 to-transparent" />
-                <div className="relative z-10 text-center select-none px-4 mt-auto pb-6">
-                  <div className="text-white/40 text-[8px] tracking-[0.35em] uppercase mb-1">Powered by AI</div>
-                  <div className="text-white font-black text-xl md:text-2xl tracking-tight">Nexsolutions</div>
+            <div className="relative w-full max-w-[480px] sm:max-w-[520px] lg:max-w-[580px] mx-auto">
+              <div className="hero-image-frame">
+                <div className="hero-image-frame__inner">
+                  <span className="hero-image-frame__corner hero-image-frame__corner--tl" aria-hidden />
+                  <span className="hero-image-frame__corner hero-image-frame__corner--tr" aria-hidden />
+                  <span className="hero-image-frame__corner hero-image-frame__corner--bl" aria-hidden />
+                  <span className="hero-image-frame__corner hero-image-frame__corner--br" aria-hidden />
+                  <div className="hero-image-frame__img-wrap">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/her.png"
+                      alt="Nexsolutions — web development, AI automation, digital marketing and SEO"
+                      className="w-full h-auto object-contain"
+                      style={{ display: "block" }}
+                    />
+                  </div>
                 </div>
               </div>
-
-              {floatingCards.map((card, idx) => {
-                const Icon = card.icon;
-                return (
-                  <motion.div
-                    key={card.pos}
-                    className={`absolute ${posStyle[card.pos]} z-10`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
-                  >
-                    <div
-                      className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl whitespace-nowrap"
-                      style={{
-                        background: "#1D1D1D",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-                      }}
-                    >
-                      <div
-                        className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: `${card.color}15`, border: `1px solid ${card.color}25` }}
-                      >
-                        <Icon size={14} style={{ color: card.color }} />
-                      </div>
-                      <span className="text-[#EBEBEB] text-[12px] font-semibold hidden sm:block">{card.label}</span>
-                    </div>
-                  </motion.div>
-                );
-              })}
             </div>
           </motion.div>
         </div>

@@ -70,8 +70,8 @@ export default function FeaturesSection() {
             <span className="tag-pill">Why Nexsolutions</span>
           </div>
           <h2 className="text-white">
-            A team that ships,{" "}
-            <span className="text-[#00C2FF]">not just designs</span>
+            Built for growth,{" "}
+            <span className="text-[#00C2FF]">from launch to long-term support</span>
           </h2>
         </motion.div>
 
