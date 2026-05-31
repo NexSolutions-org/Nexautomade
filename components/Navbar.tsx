@@ -129,102 +129,106 @@ export default function Navbar() {
                       </button>
 
                       {servicesOpen && (
-                        <div
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.55)] border border-white/[0.08]"
-                          style={{ width: "780px" }}
-                        >
-                          <div className="grid grid-cols-5">
-                            {/* Left — service grid */}
-                            <div className="col-span-3 bg-[#F5F5F7] p-6">
-                              <div className="grid grid-cols-2 gap-1">
-                                {serviceLinks.map((s) => {
-                                  const Icon = s.icon;
-                                  return (
-                                    <Link
-                                      key={s.href}
-                                      href={s.href}
-                                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-white transition-all group"
-                                    >
-                                      <div
-                                        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                                        style={{ background: `${s.color}18`, border: `1px solid ${s.color}30` }}
-                                      >
-                                        <Icon size={16} style={{ color: s.color }} />
-                                      </div>
-                                      <div>
-                                        <p className="text-[#111118] text-[13px] font-bold group-hover:text-[#00C2FF] transition-colors">
-                                          {s.label}
-                                        </p>
-                                        <p className="text-[#6B6B7B] text-[11px] mt-0.5">{s.sub}</p>
-                                      </div>
-                                    </Link>
-                                  );
-                                })}
-                              </div>
-
-                              <div className="mt-5 pt-5 border-t border-[#E0E0E8] flex flex-wrap items-center gap-4">
-                                <Link
-                                  href="/schedule-meeting"
-                                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[12px] font-bold bg-[#00C2FF] text-[#0A0A0F] hover:bg-[#00aee6] transition-colors uppercase tracking-wide"
-                                >
-                                  Free Consultation
-                                  <ArrowUpRight size={14} />
-                                </Link>
-                                <div className="flex items-center gap-3">
-                                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E8E8EE]">
-                                    <div className="flex gap-0.5">
-                                      {Array.from({ length: 5 }).map((_, i) => (
-                                        <Star key={i} size={10} className="text-amber-400 fill-amber-400" />
-                                      ))}
-                                    </div>
-                                    <span className="text-[#111118] text-[11px] font-semibold">186+ Projects</span>
-                                  </div>
-                                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E8E8EE]">
-                                    <div className="flex gap-0.5">
-                                      {Array.from({ length: 5 }).map((_, i) => (
-                                        <Star key={i} size={10} className="text-amber-400 fill-amber-400" />
-                                      ))}
-                                    </div>
-                                    <span className="text-[#111118] text-[11px] font-semibold">100+ Clients</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Right — brand panel */}
-                            <div
-                              className="col-span-2 p-6 flex flex-col justify-between text-white"
-                              style={{ background: "linear-gradient(160deg, #00C2FF 0%, #5A8FA8 45%, #7B5EA7 100%)" }}
-                            >
-                              <div>
-                                <div className="flex items-center gap-3 mb-4">
-                                  <div className="w-14 h-14 rounded-xl overflow-hidden border-2 border-white/30 flex-shrink-0">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="/images/nex.webp" alt="Nexsolutions team" className="w-full h-full object-cover" />
-                                  </div>
-                                  <div>
-                                    <p className="font-bold text-sm leading-tight">Nexsolutions Team</p>
-                                    <p className="text-white/70 text-[11px] mt-0.5">Creative Nexus · Lahore, PK</p>
-                                  </div>
-                                </div>
-                                <p className="text-[13px] leading-relaxed text-white/90">
-                                  We build websites, AI systems, and marketing engines that drive real growth — for
-                                  brands in 12+ countries since 2021.
+                        /* Invisible pt bridge — cursor stays inside parent while moving to menu */
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[min(780px,calc(100vw-2rem))]">
+                          <div className="rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.65)] border border-white/[0.08] bg-[#1D1D1D]">
+                            <div className="grid grid-cols-1 xl:grid-cols-5 max-h-[min(85vh,640px)] overflow-y-auto">
+                              {/* Services grid */}
+                              <div className="xl:col-span-3 p-5 md:p-6 border-b xl:border-b-0 xl:border-r border-white/[0.06]">
+                                <p className="text-[#5C5C6E] text-[10px] font-semibold uppercase tracking-widest mb-4 px-1">
+                                  Our Services
                                 </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                                  {serviceLinks.map((s) => {
+                                    const Icon = s.icon;
+                                    return (
+                                      <Link
+                                        key={s.href}
+                                        href={s.href}
+                                        onClick={() => setServicesOpen(false)}
+                                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-[#252525] transition-all group"
+                                      >
+                                        <div
+                                          className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                                          style={{ background: `${s.color}15`, border: `1px solid ${s.color}28` }}
+                                        >
+                                          <Icon size={16} style={{ color: s.color }} />
+                                        </div>
+                                        <div className="min-w-0">
+                                          <p className="text-[#EBEBEB] text-[13px] font-bold group-hover:text-[#00C2FF] transition-colors">
+                                            {s.label}
+                                          </p>
+                                          <p className="text-[#9A9AAA] text-[11px] mt-0.5">{s.sub}</p>
+                                        </div>
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
+
+                                <div className="mt-5 pt-5 border-t border-white/[0.06] flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
+                                  <Link
+                                    href="/schedule-meeting"
+                                    onClick={() => setServicesOpen(false)}
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-[12px] font-bold bg-[#00C2FF] text-[#0A0A0F] hover:bg-[#00aee6] transition-colors uppercase tracking-wide"
+                                  >
+                                    Free Consultation
+                                    <ArrowUpRight size={14} />
+                                  </Link>
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#252525] border border-white/[0.06]">
+                                      <div className="flex gap-0.5">
+                                        {Array.from({ length: 5 }).map((_, i) => (
+                                          <Star key={i} size={10} className="text-amber-400 fill-amber-400" />
+                                        ))}
+                                      </div>
+                                      <span className="text-[#EBEBEB] text-[11px] font-semibold">186+ Projects</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#252525] border border-white/[0.06]">
+                                      <div className="flex gap-0.5">
+                                        {Array.from({ length: 5 }).map((_, i) => (
+                                          <Star key={i} size={10} className="text-amber-400 fill-amber-400" />
+                                        ))}
+                                      </div>
+                                      <span className="text-[#EBEBEB] text-[11px] font-semibold">100+ Clients</span>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                              <div className="mt-6 space-y-2">
-                                <Link
-                                  href="/our-services"
-                                  className="block text-center py-2.5 px-4 rounded-xl text-[12px] font-bold bg-white/15 border border-white/25 hover:bg-white/25 transition-colors"
-                                >
-                                  View All Services
-                                </Link>
-                                <Link
-                                  href="/project-showcase"
-                                  className="block text-center py-2.5 px-4 rounded-xl text-[12px] font-semibold bg-white text-[#111118] hover:bg-white/90 transition-colors"
-                                >
-                                  See Our Work
-                                </Link>
+
+                              {/* Brand panel */}
+                              <div className="xl:col-span-2 p-5 md:p-6 flex flex-col justify-between bg-[#141418]">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-14 h-14 rounded-xl overflow-hidden border border-white/[0.1] flex-shrink-0">
+                                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                                      <img src="/images/nex.webp" alt="Nexsolutions team" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div>
+                                      <p className="font-bold text-sm leading-tight text-[#EBEBEB]">Nexsolutions Team</p>
+                                      <p className="text-[#9A9AAA] text-[11px] mt-0.5">Global Agency · 12+ Countries</p>
+                                    </div>
+                                  </div>
+                                  <p className="text-[13px] leading-relaxed text-[#9A9AAA]">
+                                    We build websites, AI systems, and marketing engines that drive real growth — for
+                                    brands worldwide since 2021.
+                                  </p>
+                                </div>
+                                <div className="mt-6 space-y-2">
+                                  <Link
+                                    href="/our-services"
+                                    onClick={() => setServicesOpen(false)}
+                                    className="block text-center py-2.5 px-4 rounded-xl text-[12px] font-bold text-[#00C2FF] bg-[#00C2FF]/10 border border-[#00C2FF]/25 hover:bg-[#00C2FF]/15 transition-colors"
+                                  >
+                                    View All Services
+                                  </Link>
+                                  <Link
+                                    href="/project-showcase"
+                                    onClick={() => setServicesOpen(false)}
+                                    className="block text-center py-2.5 px-4 rounded-xl text-[12px] font-semibold bg-[#252525] text-[#EBEBEB] border border-white/[0.08] hover:border-[#00C2FF]/30 transition-colors"
+                                  >
+                                    See Our Work
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           </div>
