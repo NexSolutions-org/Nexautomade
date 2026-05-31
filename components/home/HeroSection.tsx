@@ -58,12 +58,12 @@ export default function HeroSection() {
             <h1 className="font-extrabold leading-[1.08] tracking-tight mb-6 text-[2rem] sm:text-[2.5rem] md:text-5xl lg:text-[3.25rem]">
               <span className="text-[#EBEBEB]">Result Driven </span>
               <span className="text-[#00C2FF]">Digital Growth Agency</span>
-              <span className="text-[#EBEBEB]"> in Lahore</span>
+              <span className="text-[#EBEBEB]"> for Global Brands</span>
             </h1>
 
             <p className="text-[#9A9AAA] text-base md:text-[17px] leading-relaxed mb-8 max-w-lg">
-              In today&apos;s digital era, Nexsolutions empowers businesses with high-performance websites, AI
-              automation, and marketing that actually delivers measurable results.
+              Based in Lahore, trusted worldwide — Nexsolutions empowers businesses across 12+ countries with
+              high-performance websites, AI automation, and marketing that delivers measurable results.
             </p>
 
             <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8">
