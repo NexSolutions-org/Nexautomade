@@ -119,7 +119,7 @@ export default function ScheduleMeetingContent() {
               <div>
                 <span className="tag-pill mb-4 inline-block">Free Consultation</span>
                 <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-                  Let's Build Something <span className="gradient-text">Great Together</span>
+                  Let&apos;s Build Something <span className="gradient-text">Great Together</span>
                 </h2>
                 <p className="text-[#8A8A9A] text-[15px] leading-relaxed">
                   Fill out the form and our team will review your project requirements and get back to you with a tailored proposal.

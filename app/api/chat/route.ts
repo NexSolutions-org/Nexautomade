@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
       "I couldn't generate a response. Please try again.";
 
     // Check for meeting data and send email
-    const meetingMatch = raw.match(/MEETING_DATA:\{.*?\}/s);
+    const meetingMatch = raw.match(/MEETING_DATA:\{[\s\S]*?\}/);
     if (meetingMatch) {
       try {
         const parsed = JSON.parse(meetingMatch[0].replace("MEETING_DATA:", ""));
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
       } catch {
         // silently ignore parse errors
       }
-      raw = raw.replace(/MEETING_DATA:\{.*?\}/s, "").trim();
+      raw = raw.replace(/MEETING_DATA:\{[\s\S]*?\}/, "").trim();
     }
 
     // Strip all markdown formatting
