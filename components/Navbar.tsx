@@ -55,11 +55,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-[#1C1C28] ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-[#1C1C28] pt-[max(0.75rem,env(safe-area-inset-top))] md:pt-0 ${
         scrolled ? "bg-[#0A0A0F]/95 backdrop-blur-md" : "bg-[#0A0A0F]"
       }`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-          <div className="flex items-center justify-between h-18 md:h-20">
+          <div className="flex items-center justify-between min-h-[56px] py-2 md:py-0 md:h-20">
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export default function Navbar() {
                 alt="Nexsolutions Logo"
                 width={200}
                 height={70}
-                className="h-14 w-auto object-contain"
+                className="h-10 sm:h-11 md:h-14 w-auto object-contain"
                 priority
               />
             </Link>
@@ -302,7 +302,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="h-18 md:h-20" />
+      <div className="h-[calc(4.5rem+max(0.75rem,env(safe-area-inset-top)))] md:h-20" />
     </>
   );
 }
