@@ -51,6 +51,7 @@ function NexAIIcon({ size = 20 }: { size?: number }) {
 
 export default function AIChatbot() {
   const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
@@ -71,6 +72,16 @@ export default function AIChatbot() {
       setTimeout(() => inputRef.current?.focus(), 300);
     }
   }, [open]);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ open: boolean }>).detail;
+      setMobileMenuOpen(detail.open);
+      if (detail.open) setOpen(false);
+    };
+    window.addEventListener("mobile-menu-toggle", handler);
+    return () => window.removeEventListener("mobile-menu-toggle", handler);
+  }, []);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -112,7 +123,7 @@ export default function AIChatbot() {
     <>
       {/* Floating button */}
       <AnimatePresence>
-        {!open && (
+        {!open && !mobileMenuOpen && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

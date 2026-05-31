@@ -40,6 +40,14 @@ export default function Navbar() {
 
   useEffect(() => { setMobileOpen(false); setServicesOpen(false); }, [pathname]);
 
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("mobile-menu-toggle", { detail: { open: mobileOpen } }));
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -202,13 +210,13 @@ export default function Navbar() {
       {/* Mobile drawer backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-[65] bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Mobile drawer */}
-      <div className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-[#0D0D14] border-l border-[#1C1C28] flex flex-col transition-transform duration-300 lg:hidden ${
+      <div className={`fixed top-0 right-0 bottom-0 z-[70] w-72 bg-[#0D0D14] border-l border-[#1C1C28] flex flex-col transition-transform duration-300 lg:hidden ${
         mobileOpen ? "translate-x-0" : "translate-x-full"
       }`}>
         {/* Drawer header */}
@@ -290,7 +298,7 @@ export default function Navbar() {
         </div>
 
         {/* Drawer CTA */}
-        <div className="px-4 py-6 border-t border-[#1C1C28]">
+        <div className="px-4 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-[#1C1C28]">
           <Link
             href="/schedule-meeting"
             onClick={() => setMobileOpen(false)}
